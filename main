@@ -12,35 +12,35 @@ def main():
     canvas= Canvas(gui, width= 800, height= 600)
     canvas.create_text(300, 50, text="HELLO WORLD", fill="black", font=('Helvetica 15 bold'))
 
-    button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5)
-    button1.place(x=150, y=275)
+   button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5)
+    button1.place(x=200, y=150)
 
     button2 = Button(gui, text ="2",cursor="circle",width=10, height=5,bd=5)
-    button2.place(x=350, y=275)
+    button2.place(x=300, y=150)
 
     button3 = Button(gui, text ="3",cursor="circle",width=10,height=5,bd=5)
-    button3.place(x=550, y=285)
+    button3.place(x=400, y=150)
 
     button4 = Button(gui, text ="4",cursor="circle",width=10,height=5,bd=5)
-    button4.place(x=150, y=295)
+    button4.place(x=200, y=250)
 
     button5 = Button(gui, text ="5",cursor="circle",width=10, height=5,bd=5)
-    button5.place(x=350, y=315)
+    button5.place(x=300, y=250)
 
     button6 = Button(gui, text ="6",cursor="circle",width=10,height=5,bd=5)
-    button6.place(x=550, y=400)
+    button6.place(x=400, y=250)
 
     button7 = Button(gui, text ="7",cursor="circle",width=10,height=5,bd=5)
-    button7.place(x=150, y=295)
+    button7.place(x=200, y=350)
 
     button8 = Button(gui, text ="8",cursor="circle",width=10, height=5,bd=5)
-    button8.place(x=350, y=315)
+    button8.place(x=300, y=350)
 
     button9 = Button(gui, text ="9",cursor="circle",width=10,height=5,bd=5)
-    button9 .place(x=550, y=400)
+    button9 .place(x=400, y=350)
 
     button10 = Button(gui, text ="0",cursor="circle",width=10,height=5,bd=5)
-    button10.place(x=150, y=295)
+    button10.place(x=300, y=450)
 
     button11 = Button(gui, text ="+",cursor="circle",width=10, height=5,bd=5)
     button11.place(x=350, y=700)
