@@ -1,4 +1,9 @@
-from tkinter import *
+from msilib.schema import SelfReg
+from tkinter import Tk
+from tkinter.ttk import Style
+from tkinter import messagebox
+from tkinter import Button
+from tkinter import Canvas
 
 def main():
     gui = Tk()
