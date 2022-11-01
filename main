@@ -1,7 +1,6 @@
 from msilib.schema import SelfReg
 from tkinter import Label, Tk
 from tkinter.ttk import Style
-from tkinter import messagebox
 from tkinter import Button
 from tkinter import Canvas
 
@@ -15,7 +14,8 @@ def main():
     gui.geometry("800x600") # defines window size
     gui.title("Calculator")
     gui.configure(background="white")
-
+    
+    display(0)
     canvas.create_text(300, 50, text="HELLO WORLD", fill="black", font=('Helvetica 15 bold'))
 
     button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5,command= one)
@@ -117,6 +117,7 @@ def clear():
     global input_list,inputstring,total
     input_list = []
     inputstring = ""
+    display("clear")
     total=0
 
 def delete():
@@ -128,7 +129,8 @@ def delete():
 def display(return_number):
     global inputstring, total
     makeString()
-    #trying to fix it
+    inputstring+="    "
+    total = str(total)+"    "
     #display = Label(gui, fg="white")
     #display.place(x=10,y=10)
     display = Label(gui, text="",font=("Helvetica", 35))
@@ -136,6 +138,10 @@ def display(return_number):
         display.config(text= inputstring)
     elif return_number == 1:
         display.config(text= total)
+    elif return_number == 2:
+        display.config(text = "ERROR!")
+    elif return_number == "clear":
+        display.config(text = "                       ")
     display.place(x=50,y=50)
 
 def add_input(inputvalue):
