@@ -42,20 +42,26 @@ def main():
     button10 = Button(gui, text ="0",cursor="circle",width=10,height=5,bd=5)
     button10.place(x=300, y=450)
 
-    button11 = Button(gui, text ="+",cursor="circle",width=10, height=5,bd=5)
-    button11.place(x=350, y=700)
+   button11 = Button(gui, text ="+",cursor="circle",width=10, height=5,bd=5)
+    button11.place(x=700, y=100)
 
     button12 = Button(gui, text ="-",cursor="circle",width=10,height=5,bd=5)
-    button12.place(x=550, y=700)
+    button12.place(x=700, y=200)
 
     button13 = Button(gui, text ="x",cursor="circle",width=10,height=5,bd=5)
-    button13.place(x=550, y=700)
+    button13.place(x=700, y=300)
 
     button14 = Button(gui, text ="÷",cursor="circle",width=10,height=5,bd=5)
-    button14.place(x=550, y=700)
-   
-    gui.mainloop()
+    button14.place(x=700, y=400)
+
+    button14 = Button(gui, text ="=",cursor="circle",width=10,height=5,bd=5)
+    button14.place(x=700, y=500)
     
+
+
+    gui.mainloop()
+
+
 def add_input(inputvalue):
     global input_list
     input_list.append(inputvalue)
