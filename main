@@ -1,0 +1,160 @@
+from msilib.schema import SelfReg
+import tkinter as tk
+from tkinter import ttk
+from tkinter import *
+from tkinter.ttk import *
+from tkinter import messagebox
+
+# def main():
+    # gui = Tk()
+    # gui.geometry("800x600") # defines window size
+    # Code to add widgets will go here...
+
+    #canvas= Canvas(gui, width= 800, height= 600)
+    #canvas.create_text(300, 50, text="HELLO WORLD", fill="black", font=('Helvetica 15 bold'))
+    # Creates button &
+    # runGame1 = Button(gui, text ="Game1",cursor="circle",width=10,height=5,bd=5,command=game1)
+    # runGame1.place(x=150, y=275)
+
+    # runGame2 = Button(gui, text ="Game2",cursor="circle",width=10,height=5,bd=5,command=game2)
+    # runGame2.place(x=350, y=275)
+
+    # runGame3 = Button(gui, text ="Game3",cursor="circle",width=10,height=5,bd=5,command=game3)
+    # runGame3.place(x=550, y=275)
+    # width=10,
+        # height=5,
+        # bd=5,
+    # gui.mainloop()
+
+class MainGameWindow(tk.Tk): #Default Window Class
+    number_list = []
+    def __init__(self): # Default Constructor
+        super().__init__()
+            
+        self.geometry('800x600')
+        self.title('Game Window Manager')
+
+        # Button Basic Style 
+        style = Style()
+        style.configure('TButton', font =
+               ('calibri', 20, 'bold'),
+                    borderwidth = '4')
+
+        # Button (On Hover) Style
+        style.map('TButton', foreground = [('active', '!disabled', 'green')],
+                     background = [('active', 'grey')])
+
+        #Buttons 1-3
+        runGame1 = Button(self, 
+            text ="Game1",
+            cursor="circle",
+            command=self.open_windowone)
+        runGame1.place(x=125, y=275)
+
+        runGame2 = Button(self, 
+            text ="Game2",
+            cursor="circle",
+            command=self.open_windowtwo)
+        runGame2.place(x=325, y=275)
+
+        runGame3 = Button(self, 
+            text ="Game3",
+            cursor="circle",
+            command=self.open_windowthree)
+        runGame3.place(x=525, y=275)
+
+        # place a buttons on the root window
+
+    # Runs other classes (might not be neccessary) (self.withdraw could help get rid of the pane when needed)
+    
+    def add_number(number):
+        number_list.append(number)
+    """
+    def open_windowtwo(self):
+        window = GameTwo(self)
+        window.grab_set()
+    
+    def open_windowthree(self):
+        window = GameThree(self)
+        window.grab_set()
+    """
+
+
+
+
+"""
+class GameOne(tk.Toplevel): # TopLevel Window 1 (The Experimental Window)
+    def __init__(one, parent):
+        super().__init__(parent)
+
+        one.geometry('800x600')
+        one.title('GameOne')
+
+        style = Style()
+        # There is a problem with button colors as if clicked once it seems to be kept like that for some reason
+        style.map('TButton', foreground = [('active', '!disabled', 'red')],
+        background = [('active', 'grey')])
+        runGame = Button(one, 
+            text ="Close",
+            cursor="circle",
+            command=one.destroy)
+        # runGame.place(x=0, y=300) # x=325, y=500
+        runGame.pack( side = BOTTOM, pady=30) 
+        
+        # Experimenting with input for something like a higher-lower guessing game
+        
+        canvasone = tk.Canvas(one,width=800,height=600)
+        canvasone.pack()
+        entryone = tk.Entry(one)
+        canvasone.create_window(395,250,window=entryone)
+        def return_number():
+            number = entryone.get()
+            one.title(number)
+
+        answer = Button(text="Enter",command=return_number())
+        
+        # canvasone.create_window(200,200,window=answer)
+
+class GameTwo(tk.Toplevel): # TopLevel Window 2
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.geometry('800x600')
+        self.title('GameTwo')
+
+        style = Style()
+        style.map('TButton', foreground = [('active', '!disabled', 'red')],
+                     background = [('active', 'grey')])
+        runGame = Button(self, 
+            text ="Close",
+            cursor="circle",
+            command=self.destroy)
+        runGame.pack( side = BOTTOM, pady=30)  
+
+class GameThree(tk.Toplevel): # TopLevel Window 3
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.geometry('800x600')
+        self.title('GameThree')
+
+        style = Style()
+        style.map('TButton', foreground = [('active', '!disabled', 'red')],
+                     background = [('active', 'grey')])
+        runGame = Button(self,
+            text ="Close",
+            cursor="circle",
+            command=self.destroy)
+        runGame.pack( side = BOTTOM, pady=30)  
+"""
+# Other Sources
+# https://www.geeksforgeeks.org/python-add-style-to-tkinter-button/
+# https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/ttk-Button.html 
+# https://docs.python.org/3/library/tkinter.ttk.html
+# https://www.tutorialspoint.com/python/tk_button.htm
+
+if __name__ == "__main__": # main
+    Maingame = MainGameWindow() 
+    Maingame.mainloop()
+
+
