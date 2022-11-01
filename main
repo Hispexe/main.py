@@ -152,8 +152,15 @@ def makeString():
 
 def equate_input():
     global inputstring, total
-    total = eval(inputstring)
-    display(1)
+    if_error=False
+    try:
+        total = eval(inputstring)
+    except (SyntaxError, ZeroDivisionError):
+        display(2)
+        if_error=True
+        print("Error!")
+    if not if_error:
+        display(1)
     print(total)
 
 main()
