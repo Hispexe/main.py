@@ -104,6 +104,10 @@ def mult():
 def div():
     add_input("/")
 
+def clear():
+    global input_list
+    input_list = []
+
 def add_input(inputvalue):
     global input_list
     input_list.append(inputvalue)
