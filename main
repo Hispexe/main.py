@@ -7,26 +7,53 @@ def main():
     canvas= Canvas(gui, width= 800, height= 600)
     canvas.create_text(300, 50, text="HELLO WORLD", fill="black", font=('Helvetica 15 bold'))
 
-    runGame1 = Button(gui, text ="+",cursor="circle",width=10,height=5,bd=5)
-    runGame1.place(x=150, y=275)
+    button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5)
+    button1.place(x=150, y=275)
 
-    runGame2 = Button(gui, text ="-",cursor="circle",width=10, height=5,bd=5)
-    runGame2.place(x=350, y=275)
+    button2 = Button(gui, text ="2",cursor="circle",width=10, height=5,bd=5)
+    button2.place(x=350, y=275)
 
-    runGame3 = Button(gui, text ="x",cursor="circle",width=10,height=5,bd=5)
-    runGame3.place(x=550, y=275)
+    button3 = Button(gui, text ="3",cursor="circle",width=10,height=5,bd=5)
+    button3.place(x=550, y=285)
 
-    runGame1 = Button(gui, text ="+",cursor="circle",width=10,height=5,bd=5)
-    runGame1.place(x=150, y=275)
+    button4 = Button(gui, text ="4",cursor="circle",width=10,height=5,bd=5)
+    button4.place(x=150, y=295)
 
-    runGame2 = Button(gui, text ="-",cursor="circle",width=10, height=5,bd=5)
-    runGame2.place(x=350, y=275)
+    button5 = Button(gui, text ="5",cursor="circle",width=10, height=5,bd=5)
+    button5.place(x=350, y=315)
 
-    runGame3 = Button(gui, text ="x",cursor="circle",width=10,height=5,bd=5)
-    runGame3.place(x=550, y=275)
+    button6 = Button(gui, text ="6",cursor="circle",width=10,height=5,bd=5)
+    button6.place(x=550, y=400)
+
+    button7 = Button(gui, text ="7",cursor="circle",width=10,height=5,bd=5)
+    button7.place(x=150, y=295)
+
+    button8 = Button(gui, text ="8",cursor="circle",width=10, height=5,bd=5)
+    button8.place(x=350, y=315)
+
+    button9 = Button(gui, text ="9",cursor="circle",width=10,height=5,bd=5)
+    button9 .place(x=550, y=400)
+
+    button10 = Button(gui, text ="0",cursor="circle",width=10,height=5,bd=5)
+    button10.place(x=150, y=295)
+
+    button11 = Button(gui, text ="+",cursor="circle",width=10, height=5,bd=5)
+    button11.place(x=350, y=700)
+
+    button12 = Button(gui, text ="-",cursor="circle",width=10,height=5,bd=5)
+    button12.place(x=550, y=700)
+
+    button13 = Button(gui, text ="x",cursor="circle",width=10,height=5,bd=5)
+    button13.place(x=550, y=700)
+
+    button14 = Button(gui, text ="÷",cursor="circle",width=10,height=5,bd=5)
+    button14.place(x=550, y=700)
+    
+
 
     gui.mainloop()
 
 
 main()
+
 
