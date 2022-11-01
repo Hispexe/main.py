@@ -5,75 +5,119 @@ from tkinter import messagebox
 from tkinter import Button
 from tkinter import Canvas
 
+input_list = []
+
 def main():
     gui = Tk()
     gui.geometry("800x600") # defines window size
+    gui.title("Calculator")
 
     canvas= Canvas(gui, width= 800, height= 600)
     canvas.create_text(300, 50, text="HELLO WORLD", fill="black", font=('Helvetica 15 bold'))
 
-   button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5)
+    button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5,command= one)
     button1.place(x=200, y=150)
 
-    button2 = Button(gui, text ="2",cursor="circle",width=10, height=5,bd=5)
+    button2 = Button(gui, text ="2",cursor="circle",width=10, height=5,bd=5,command= two)
     button2.place(x=300, y=150)
 
-    button3 = Button(gui, text ="3",cursor="circle",width=10,height=5,bd=5)
+    button3 = Button(gui, text ="3",cursor="circle",width=10,height=5,bd=5,command= three)
     button3.place(x=400, y=150)
 
-    button4 = Button(gui, text ="4",cursor="circle",width=10,height=5,bd=5)
+    button4 = Button(gui, text ="4",cursor="circle",width=10,height=5,bd=5,command= four)
     button4.place(x=200, y=250)
 
-    button5 = Button(gui, text ="5",cursor="circle",width=10, height=5,bd=5)
+    button5 = Button(gui, text ="5",cursor="circle",width=10, height=5,bd=5,command= five)
     button5.place(x=300, y=250)
 
-    button6 = Button(gui, text ="6",cursor="circle",width=10,height=5,bd=5)
+    button6 = Button(gui, text ="6",cursor="circle",width=10,height=5,bd=5,command= six)
     button6.place(x=400, y=250)
 
-    button7 = Button(gui, text ="7",cursor="circle",width=10,height=5,bd=5)
+    button7 = Button(gui, text ="7",cursor="circle",width=10,height=5,bd=5,command= seven)
     button7.place(x=200, y=350)
 
-    button8 = Button(gui, text ="8",cursor="circle",width=10, height=5,bd=5)
+    button8 = Button(gui, text ="8",cursor="circle",width=10, height=5,bd=5,command= eight)
     button8.place(x=300, y=350)
 
-    button9 = Button(gui, text ="9",cursor="circle",width=10,height=5,bd=5)
+    button9 = Button(gui, text ="9",cursor="circle",width=10,height=5,bd=5,command= nine)
     button9 .place(x=400, y=350)
 
-    button10 = Button(gui, text ="0",cursor="circle",width=10,height=5,bd=5)
+    button10 = Button(gui, text ="0",cursor="circle",width=10,height=5,bd=5,command= zero)
     button10.place(x=300, y=450)
 
-   button11 = Button(gui, text ="+",cursor="circle",width=10, height=5,bd=5)
+    button11 = Button(gui, text ="+",cursor="circle",width=10, height=5,bd=5,command= add)
     button11.place(x=700, y=100)
 
-    button12 = Button(gui, text ="-",cursor="circle",width=10,height=5,bd=5)
+    button12 = Button(gui, text ="-",cursor="circle",width=10,height=5,bd=5,command= sub)
     button12.place(x=700, y=200)
 
-    button13 = Button(gui, text ="x",cursor="circle",width=10,height=5,bd=5)
+    button13 = Button(gui, text ="x",cursor="circle",width=10,height=5,bd=5,command= mult)
     button13.place(x=700, y=300)
 
-    button14 = Button(gui, text ="÷",cursor="circle",width=10,height=5,bd=5)
+    button14 = Button(gui, text ="÷",cursor="circle",width=10,height=5,bd=5,command= div)
     button14.place(x=700, y=400)
 
-    button14 = Button(gui, text ="=",cursor="circle",width=10,height=5,bd=5)
+    button14 = Button(gui, text ="=",cursor="circle",width=10,height=5,bd=5,command= equate_input)
     button14.place(x=700, y=500)
     
-
-
     gui.mainloop()
 
+def one():
+    add_input("1")
+
+def two():
+    add_input("2")
+
+def three():
+    add_input("3")
+
+def four():
+    add_input("4")
+
+def five():
+    add_input("5")
+
+def six():
+    add_input("6")
+
+def seven():
+    add_input("7")
+
+def eight():
+    add_input("8")
+
+def nine():
+    add_input("9")
+
+def zero():
+    add_input("0")
+
+def add():
+    add_input("+")
+
+def sub():
+    add_input("-")
+
+def mult():
+    add_input("x")
+
+def div():
+    add_input("/")
 
 def add_input(inputvalue):
     global input_list
     input_list.append(inputvalue)
+    print(input_list)
 
 def equate_input():
     global input_list
     equation = ""
-    for i in input_list:
-        equation = equation + input_list[i]
+    #for i in input_list:
+        #equation + input_list[i]
+    for item in input_list:
+        equation = equation + item
     number = eval(equation)
-    return number
+    print(number)
 
 main()
-
 
