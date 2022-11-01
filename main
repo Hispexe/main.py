@@ -1,5 +1,5 @@
 from msilib.schema import SelfReg
-from tkinter import Tk
+from tkinter import Label, Tk
 from tkinter.ttk import Style
 from tkinter import messagebox
 from tkinter import Button
@@ -7,13 +7,15 @@ from tkinter import Canvas
 
 input_list = []
 inputstring = ""
+total = 0
 gui = Tk()
+canvas= Canvas(gui, width= 800, height= 600)
 
 def main():
     gui.geometry("800x600") # defines window size
     gui.title("Calculator")
+    gui.configure(background="white")
 
-    canvas= Canvas(gui, width= 800, height= 600)
     canvas.create_text(300, 50, text="HELLO WORLD", fill="black", font=('Helvetica 15 bold'))
 
     button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5,command= one)
@@ -112,27 +114,46 @@ def div():
     add_input("/")
 
 def clear():
-    global input_list
+    global input_list,inputstring,total
     input_list = []
+    inputstring = ""
+    total=0
 
 def delete():
     global input_list
     input_list=input_list[:-1]
+    display(0)
+
+    
+def display(return_number):
+    global inputstring, total
+    makeString()
+    #trying to fix it
+    #display = Label(gui, fg="white")
+    #display.place(x=10,y=10)
+    display = Label(gui, text="",font=("Helvetica", 35))
+    if return_number == 0:
+        display.config(text= inputstring)
+    elif return_number == 1:
+        display.config(text= total)
+    display.place(x=50,y=50)
 
 def add_input(inputvalue):
     global input_list
     input_list.append(inputvalue)
     print(input_list)
-    makeString()
+    display(0)
 
 def makeString():
     global input_list, inputstring
+    inputstring=""
     for item in input_list:
         inputstring = inputstring + item
 
 def equate_input():
-    global inputstring
-    number = eval(inputstring)
-    print(number)
+    global inputstring, total
+    total = eval(inputstring)
+    display(1)
+    print(total)
 
 main()
