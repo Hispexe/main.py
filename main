@@ -99,7 +99,7 @@ def sub():
     add_input("-")
 
 def mult():
-    add_input("x")
+    add_input("*")
 
 def div():
     add_input("/")
