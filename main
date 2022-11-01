@@ -59,6 +59,12 @@ def main():
 
     button14 = Button(gui, text ="=",cursor="circle",width=10,height=5,bd=5,command= equate_input)
     button14.place(x=700, y=500)
+
+    button15 = Button(gui, text ="AC",cursor="circle",width=10,height=5,bd=5,command= clear)
+    button15.place(x=200, y=450)
+
+    button16 = Button(gui, text ="DEL",cursor="circle",width=10,height=5,bd=5,command= delete)
+    button16.place(x=400, y=450)
     
     gui.mainloop()
 
@@ -108,6 +114,10 @@ def clear():
     global input_list
     input_list = []
 
+def delete():
+    global input_list
+    input_list=input_list[:-1]
+
 def add_input(inputvalue):
     global input_list
     input_list.append(inputvalue)
@@ -116,12 +126,9 @@ def add_input(inputvalue):
 def equate_input():
     global input_list
     equation = ""
-    #for i in input_list:
-        #equation + input_list[i]
     for item in input_list:
         equation = equation + item
     number = eval(equation)
     print(number)
 
 main()
-
