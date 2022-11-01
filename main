@@ -6,9 +6,10 @@ from tkinter import Button
 from tkinter import Canvas
 
 input_list = []
+inputstring = ""
+gui = Tk()
 
 def main():
-    gui = Tk()
     gui.geometry("800x600") # defines window size
     gui.title("Calculator")
 
@@ -122,13 +123,16 @@ def add_input(inputvalue):
     global input_list
     input_list.append(inputvalue)
     print(input_list)
+    makeString()
+
+def makeString():
+    global input_list, inputstring
+    for item in input_list:
+        inputstring = inputstring + item
 
 def equate_input():
-    global input_list
-    equation = ""
-    for item in input_list:
-        equation = equation + item
-    number = eval(equation)
+    global inputstring
+    number = eval(inputstring)
     print(number)
 
 main()
