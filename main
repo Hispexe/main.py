@@ -1,8 +1,5 @@
 from msilib.schema import SelfReg
-from tkinter import Label, Tk
-from tkinter.ttk import Style
-from tkinter import Button
-from tkinter import Canvas
+from tkinter import Label, Tk, Button, Canvas
 
 input_list = []
 inputstring = ""
