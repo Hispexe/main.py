@@ -11,6 +11,7 @@ def main():
     gui.geometry("800x600") # defines window size
     gui.title("Calculator")
     gui.configure(background="white")
+    gui.resizable(width=False, height=False)
     
     display(0)
     canvas.create_text(300, 50, text="HELLO WORLD", fill="black", font=('Helvetica 15 bold'))
@@ -120,16 +121,14 @@ def clear():
 def delete():
     global input_list
     input_list=input_list[:-1]
+    print(input_list)
     display(0)
 
-    
 def display(return_number):
     global inputstring, total
     makeString()
-    inputstring+="    "
-    total = str(total)+"    "
-    #display = Label(gui, fg="white")
-    #display.place(x=10,y=10)
+    inputstring+="                                                                         "
+    total = str(total)+"                                                                             "
     display = Label(gui, text="",font=("Helvetica", 35))
     if return_number == 0:
         display.config(text= inputstring)
@@ -138,8 +137,8 @@ def display(return_number):
     elif return_number == 2:
         display.config(text = "ERROR!")
     elif return_number == "clear":
-        display.config(text = "                       ")
-    display.place(x=50,y=50)
+        display.config(text = "                                                                     ")
+    display.place(x=0,y=30)
 
 def add_input(inputvalue):
     global input_list
@@ -149,11 +148,13 @@ def add_input(inputvalue):
 
 def makeString():
     global input_list, inputstring
+    #need to make an inputlist max
     inputstring=""
     for item in input_list:
         inputstring = inputstring + item
 
 def equate_input():
+    # need to force the total to round the number enough to fit on the screen or use scientific notation
     global inputstring, total
     if_error=False
     try:
