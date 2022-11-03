@@ -1,11 +1,11 @@
-from msilib.schema import SelfReg
-from tkinter import Label, Tk, Button, Canvas
+from tkinter import Label, Button, Tk
 
 input_list = []
 inputstring = ""
 total = 0
 gui = Tk()
-canvas= Canvas(gui, width= 800, height= 600)
+displayed_text = Label(gui, text="",font=("Helvetica", 35))
+display_equation=False
 
 def main():
     gui.geometry("800x600") # defines window size
@@ -14,157 +14,94 @@ def main():
     gui.resizable(width=False, height=False)
     
     display(0)
-    canvas.create_text(300, 50, text="HELLO WORLD", fill="black", font=('Helvetica 15 bold'))
-
-    button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5,command= one)
-    button1.place(x=200, y=150)
-
-    button2 = Button(gui, text ="2",cursor="circle",width=10, height=5,bd=5,command= two)
-    button2.place(x=300, y=150)
-
-    button3 = Button(gui, text ="3",cursor="circle",width=10,height=5,bd=5,command= three)
-    button3.place(x=400, y=150)
-
-    button4 = Button(gui, text ="4",cursor="circle",width=10,height=5,bd=5,command= four)
-    button4.place(x=200, y=250)
-
-    button5 = Button(gui, text ="5",cursor="circle",width=10, height=5,bd=5,command= five)
-    button5.place(x=300, y=250)
-
-    button6 = Button(gui, text ="6",cursor="circle",width=10,height=5,bd=5,command= six)
-    button6.place(x=400, y=250)
-
-    button7 = Button(gui, text ="7",cursor="circle",width=10,height=5,bd=5,command= seven)
-    button7.place(x=200, y=350)
-
-    button8 = Button(gui, text ="8",cursor="circle",width=10, height=5,bd=5,command= eight)
-    button8.place(x=300, y=350)
-
-    button9 = Button(gui, text ="9",cursor="circle",width=10,height=5,bd=5,command= nine)
-    button9 .place(x=400, y=350)
-
-    button10 = Button(gui, text ="0",cursor="circle",width=10,height=5,bd=5,command= zero)
-    button10.place(x=300, y=450)
-
-    button11 = Button(gui, text ="+",cursor="circle",width=10, height=5,bd=5,command= add)
-    button11.place(x=700, y=100)
-
-    button12 = Button(gui, text ="-",cursor="circle",width=10,height=5,bd=5,command= sub)
-    button12.place(x=700, y=200)
-
-    button13 = Button(gui, text ="x",cursor="circle",width=10,height=5,bd=5,command= mult)
-    button13.place(x=700, y=300)
-
-    button14 = Button(gui, text ="÷",cursor="circle",width=10,height=5,bd=5,command= div)
-    button14.place(x=700, y=400)
-
-    button14 = Button(gui, text ="=",cursor="circle",width=10,height=5,bd=5,command= equate_input)
-    button14.place(x=700, y=500)
-
-    button15 = Button(gui, text ="AC",cursor="circle",width=10,height=5,bd=5,command= clear)
-    button15.place(x=200, y=450)
-
-    button16 = Button(gui, text ="DEL",cursor="circle",width=10,height=5,bd=5,command= delete)
-    button16.place(x=400, y=450)
-    
+    button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5,command= one); button1.place(x=50, y=150)
+    button2 = Button(gui, text ="2",cursor="circle",width=10, height=5,bd=5,command= two); button2.place(x=150, y=150)
+    button3 = Button(gui, text ="3",cursor="circle",width=10,height=5,bd=5,command= three); button3.place(x=250, y=150)
+    button4 = Button(gui, text ="4",cursor="circle",width=10,height=5,bd=5,command= four); button4.place(x=50, y=250)
+    button5 = Button(gui, text ="5",cursor="circle",width=10, height=5,bd=5,command= five); button5.place(x=150, y=250)
+    button6 = Button(gui, text ="6",cursor="circle",width=10,height=5,bd=5,command= six); button6.place(x=250, y=250)
+    button7 = Button(gui, text ="7",cursor="circle",width=10,height=5,bd=5,command= seven); button7.place(x=50, y=350)
+    button8 = Button(gui, text ="8",cursor="circle",width=10, height=5,bd=5,command= eight); button8.place(x=150, y=350)
+    button9 = Button(gui, text ="9",cursor="circle",width=10,height=5,bd=5,command= nine); button9 .place(x=250, y=350)
+    button10 = Button(gui, text ="0",cursor="circle",width=10,height=5,bd=5,command= zero); button10.place(x=150, y=450)
+    button11 = Button(gui, text ="+",cursor="circle",width=10, height=5,bd=5,command= add); button11.place(x=700, y=100)
+    button12 = Button(gui, text ="-",cursor="circle",width=10,height=5,bd=5,command= sub); button12.place(x=700, y=200)
+    button13 = Button(gui, text ="x",cursor="circle",width=10,height=5,bd=5,command= mult); button13.place(x=700, y=300)
+    button14 = Button(gui, text ="÷",cursor="circle",width=10,height=5,bd=5,command= div); button14.place(x=700, y=400)
+    button14 = Button(gui, text ="=",cursor="circle",width=10,height=5,bd=5,command= equate_input); button14.place(x=700, y=500)
+    button15 = Button(gui, text ="AC",cursor="circle",width=10,height=5,bd=5,command= clear); button15.place(x=50, y=450)
+    button16 = Button(gui, text ="DEL",cursor="circle",width=10,height=5,bd=5,command= delete); button16.place(x=250, y=450)
+    button16 = Button(gui, text ="DISP",cursor="circle",width=10,height=5,bd=5,command= display_eq); button16.place(x=600, y=500)
     gui.mainloop()
 
-def one():
-    add_input("1")
+def one():add_input("1")
+def two():add_input("2")
+def three():add_input("3")
+def four():add_input("4")
+def five():add_input("5")
+def six():add_input("6")
+def seven():add_input("7")
+def eight():add_input("8")
+def nine():add_input("9")
+def zero():add_input("0")
+def add():add_input("+")
+def sub():add_input("-")
+def mult():add_input("*")
+def div():add_input("/")
 
-def two():
-    add_input("2")
-
-def three():
-    add_input("3")
-
-def four():
-    add_input("4")
-
-def five():
-    add_input("5")
-
-def six():
-    add_input("6")
-
-def seven():
-    add_input("7")
-
-def eight():
-    add_input("8")
-
-def nine():
-    add_input("9")
-
-def zero():
-    add_input("0")
-
-def add():
-    add_input("+")
-
-def sub():
-    add_input("-")
-
-def mult():
-    add_input("*")
-
-def div():
-    add_input("/")
+def display_eq():
+    global display_equation
+    if display_equation:
+        display_equation=False
+    else:
+        display_equation=True
+    return
 
 def clear():
     global input_list,inputstring,total
     input_list = []
     inputstring = ""
-    display("clear")
+    display("display")
     total=0
 
 def delete():
     global input_list
     input_list=input_list[:-1]
-    print(input_list)
-    display(0)
+    display("display")
 
 def display(return_number):
-    global inputstring, total
+    global inputstring, total, displayed_text, display_equation
     makeString()
-    inputstring+="                                                                         "
-    total = str(total)+"                                                                             "
-    display = Label(gui, text="",font=("Helvetica", 35))
-    if return_number == 0:
-        display.config(text= inputstring)
-    elif return_number == 1:
-        display.config(text= total)
-    elif return_number == 2:
-        display.config(text = "ERROR!")
-    elif return_number == "clear":
-        display.config(text = "                                                                     ")
-    display.place(x=0,y=30)
+    if return_number == "display":
+        displayed_text.config(text= inputstring, foreground= "black")
+    elif return_number == "total":
+        if display_equation:
+            displayed_text.config(text= inputstring + " = " + str(total), foreground= "green")
+        else:
+            displayed_text.config(text= total, foreground= "green")
+    elif return_number == "error":
+        displayed_text.config(text = "ERROR!", foreground= "red")
+    displayed_text.place(x=50,y=50)
 
 def add_input(inputvalue):
     global input_list
     input_list.append(inputvalue)
-    print(input_list)
-    display(0)
+    display("display")
 
 def makeString():
     global input_list, inputstring
-    #need to make an inputlist max
     inputstring=""
     for item in input_list:
         inputstring = inputstring + item
 
 def equate_input():
-    # need to force the total to round the number enough to fit on the screen or use scientific notation
     global inputstring, total
     if_error=False
     try:
         total = eval(inputstring)
     except (SyntaxError, ZeroDivisionError):
-        display(2)
+        display("error")
         if_error=True
-        print("Error!")
     if not if_error:
-        display(1)
-    print(total)
-
+        display("total")
 main()
