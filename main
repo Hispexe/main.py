@@ -13,7 +13,6 @@ def main():
     gui.configure(background="white")
     gui.resizable(width=False, height=False)
     
-    display(0)
     button1 = Button(gui, text ="1",cursor="circle",width=10,height=5,bd=5,command= one); button1.place(x=50, y=150)
     button2 = Button(gui, text ="2",cursor="circle",width=10, height=5,bd=5,command= two); button2.place(x=150, y=150)
     button3 = Button(gui, text ="3",cursor="circle",width=10,height=5,bd=5,command= three); button3.place(x=250, y=150)
@@ -31,7 +30,7 @@ def main():
     button14 = Button(gui, text ="=",cursor="circle",width=10,height=5,bd=5,command= equate_input); button14.place(x=700, y=500)
     button15 = Button(gui, text ="AC",cursor="circle",width=10,height=5,bd=5,command= clear); button15.place(x=50, y=450)
     button16 = Button(gui, text ="DEL",cursor="circle",width=10,height=5,bd=5,command= delete); button16.place(x=250, y=450)
-    button16 = Button(gui, text ="DISP",cursor="circle",width=10,height=5,bd=5,command= display_eq); button16.place(x=600, y=500)
+    button17 = Button(gui, text ="DISP",cursor="circle",width=10,height=5,bd=5,command= display_eq); button17.place(x=600, y=500)
     gui.mainloop()
 
 def one():add_input("1")
@@ -55,7 +54,7 @@ def display_eq():
         display_equation=False
     else:
         display_equation=True
-    return
+    display("total")
 
 def clear():
     global input_list,inputstring,total
