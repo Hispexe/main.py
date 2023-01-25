@@ -1,0 +1,7 @@
+Node_Name,Node_Connections,Node_Weight
+NA,{NA,AS,SA,EU},{9,19,90,60}
+EU,{NA,AS,OC},{26,83,55}
+AS,{OC,EU,AS,AF,NA},{72,95,4,29,72}
+OC,{NA,AS,SA,OC},{93,7,65,39}
+AF,{AS,OC},{97,61}
+SA,{AF,EU},{55,33}
