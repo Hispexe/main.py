@@ -1,3 +1,5 @@
+import csv
+import pandas as pd
 class node:
     def __init__(self, name, edges, weight):
         self.name=name
@@ -10,9 +12,22 @@ class node:
     def giveweight(self):
         return(self.weight)
 
+data = pd.read_csv("data.csv")
+print(data)
+
+"""
+with open("data.csv", "r") as file:
+    csvdata= csv.reader(file)
+    for row in csvdata:
+        print(row)
+"""
+
+
+
+
 dictpathgraph={}
 dictweightgraph={}
-classtuple=[node("a",{'b','c'},{12,14}),node("b",{'a','c'},{12,19}),node("c",{'a','b'},{14,19}),node("d",{'a','c'},{14,19}),node("f",{'d','b'},{14,19})] # A list of data to be made into a dictionary entry
+classtuple=[node("a",{'b','c'},{12,14}),node("b",{'a','c'},{12,19}),node("c",{'a','b'},{14,19}),node("d",{'a','c'},{14,19}),node("f",{'d','b'},{14,19}),node("g",{'f','d','a'},{12,14,18}),node("h",{'g','d','f'},{23,4,15})] # A list of data to be made into a dictionary entry
 
 def assignpathdict(localnode):
     dictpathgraph[localnode.givename()]=localnode.giveedges()
@@ -45,11 +60,11 @@ def findAllPaths(startnode,endnode,path=[]):
     if startnode not in dictpathgraph:
         return[]
     paths=[]
-    for vertex in dictpathgraph[startnode]:
-        if vertex not in path:
-            ext_path=findAllPaths(vertex,endnode,path)
-            for ex in ext_path:
-                paths.append(ex)
+    for i in dictpathgraph[startnode]:
+        if i not in path:
+            ext_path=findAllPaths(i,endnode,path)
+            for num in ext_path:
+                paths.append(num)
     return paths
 
 """
@@ -63,12 +78,13 @@ def calCost(paths):
         costs.append(cost)
     return costs
 """
-         
+"""
 for i in range(len(classtuple)):
     assignpathdict(classtuple[i])
     assignweightdict(classtuple[i])
 
-allthepaths = findAllPaths("d","a")
+allthepaths = findAllPaths("g","a")
 print(allthepaths)
 # print(calCost(allthepaths))
 # print(dictpathgraph)
+"""
