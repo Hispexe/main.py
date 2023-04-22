@@ -35,9 +35,9 @@ public:
     }
 };
 
-class deck { //deck class which manages the deck's function
+class deck { //deck class which manages the deck's (list) function
 private:
-    card* cardDeck[52];
+    card* cardDeck[52]; // creates an empty array of card objects
     int currentIndexPos;
     string cardValues[13] = { "Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King" }; //inefficient?
     int cardNumValues[13] = { 1,2,3,4,5,6,7,8,9,10,8,9,10 };
@@ -47,7 +47,7 @@ public:
         currentIndexPos = -1;
     }
 
-    void createDeck() {
+    void createDeck() { //places card objects in all of the 52 indexes of cardDeck
         int indx = 0;
         for (int suit = 0; suit < (sizeof(cardSuits) / sizeof(string)); suit++) {
             for (int val = 0; val < (sizeof(cardValues) / sizeof(string)); val++) {
@@ -70,7 +70,8 @@ public:
             randomizeDeck(); //rerandomize the deck.
         }
         currentIndexPos++;
-        return *cardDeck[currentIndexPos];
+        return *cardDeck[currentIndexPos]; //return the card object at a specified 
+                                           //index of the deck (list)
     }
 };
 
@@ -106,12 +107,14 @@ public:
         cout << "\n" << hand.at(i).getValue() << " of " << hand.at(i).getSuit();
     }
 
-    bool gameTurn(bool turn_cond) { 
+    bool gameTurn(bool turn_cond) {
         drawCard(); drawCard();
         turn_cond = true;
         while (turn_cond) {
-            cout << "\nYour Hand:";
-            if (totalHand(true) != -1) { //allow player to keep drawing cards unless they are over 21.
+            cout << "\n============" << endl;
+            cout << " Your Hand:" << endl;
+            cout << "============";
+            if (totalHand(true) < 22) { //allow player to keep drawing cards unless they are over 21.
                 int Y_N_Input;
                 cout << "Draw Card?[1 <- (Yes)/2 <- (No)]" << endl;
                 cin >> Y_N_Input;
@@ -125,14 +128,14 @@ public:
                     drawCard();
                 }
                 else { //if player decides to stop drawing cards, figure out who won.
-                    compareHands(totalHand(false));
+                    compareHands(totalHand(false)); //call to algo 
                     turn_cond = false;
                     break;
                 }
             }
             else { //if the player goes over 21 at any point.
-                cout << "OVER 21! Dealer Wins!" << endl;
-                dealr_win_cnt++;
+                cout << "Uh Oh!\n\n"; //lol
+                compareHands(totalHand(false));
                 turn_cond = false;
                 break;
             }
@@ -150,24 +153,27 @@ public:
         //return value is used to determine if the result needs to be printed.
         int8_t hand_value = 0;
         for (int i = 0; i < hand.size(); i++) {
-            cout << '\n';
             if (return_value) {
+                cout << '\n';
                 returnCardInHand(i);
             }
             hand_value += hand.at(i).getNumValue();
         }
         if (return_value)
             cout << "\n\nHand Value : " << static_cast<int>(hand_value) << endl;
-        if (hand_value > 21)
-            return -1;
+        //if (hand_value > 21)
+            //return -1;
         return hand_value;
     }
 
-    void compareHands(int player_hand_val) { //Use this for the written CPT for iteration, selection, and sequencing
+    //Use this for the written CPT for iteration, selection, and sequencing
+    void compareHands(int player_hand_val) {
         vector<card> dealr_hand; //dealer's hand
         int8_t dealr_hand_value = 0;
-        cout << "Dealer's Hand:" << endl;
-        while (dealr_hand_value < 16) { //dealer's hand, drawing cards until it is at or above 16.
+        cout << "\n================" << endl;
+        cout << " Dealer's Hand:" << endl;
+        cout << "================";
+        while (dealr_hand_value < 16) { //dealer's hand, drawing cards until it is at or above 16. (iteration)
             card current = cardStack.returnCard();
             cout << "\n";
             current.returnCard();
@@ -175,24 +181,32 @@ public:
             dealr_hand.push_back(current);
         }
         bool dealr_over = dealr_hand_value < 22;
-        if (player_hand_val <= dealr_hand_value && dealr_over) { //decide whether the player or the dealer won.
+        if (player_hand_val > 21) {
             versus(player_hand_val, dealr_hand_value);
-            cout << "Dealer Wins!\n" << endl;
+            cout << "\nPLAYER OVER 21! Dealer Wins!" << endl;
             dealr_win_cnt++;
         }
         else {
-            if (!dealr_over) { //dealer goes over 21.
+            if (player_hand_val <= dealr_hand_value && dealr_over) { //decide whether the player or the dealer won. (selection)
                 versus(player_hand_val, dealr_hand_value);
-                cout << "Dealer Over 21! Player Wins!\n" << endl;
-                playr_win_cnt++;
+                cout << "Dealer Wins!\n" << endl;
+                dealr_win_cnt++;
             }
-            else { //player has greater value
-                versus(player_hand_val, dealr_hand_value);
-                cout << "Player Wins!\n" << endl;
-                playr_win_cnt++;
+            else {
+                if (!dealr_over) { //dealer goes over 21. (sequencing)
+                    versus(player_hand_val, dealr_hand_value);
+                    cout << "DEALER OVER 21! Player Wins!\n" << endl;
+                    playr_win_cnt++;
+                }
+                else { //player has greater value
+                    versus(player_hand_val, dealr_hand_value);
+                    cout << "Player Wins!\n" << endl;
+                    playr_win_cnt++;
+                }
             }
         }
-        cout << "Your Wins: " << static_cast<int>(playr_win_cnt) << " | Dealer Wins: " << static_cast<int>(dealr_win_cnt) << "\n\n"; //print out how many wins that either has
+        cout << "Your Wins: " << static_cast<int>(playr_win_cnt) << " | Dealer Wins: " << static_cast<int>(dealr_win_cnt) << "\n\n"; 
+        //print out how many wins that the player and dealer has
     }
 };
 
